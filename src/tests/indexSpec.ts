@@ -1,6 +1,7 @@
 import supertest from 'supertest';
 import app from '../index';
 import fs from 'fs';
+import path from 'path';
 import * as helpers from '../routes/api/helpers';
 
 const request = supertest(app);
@@ -48,13 +49,11 @@ describe('Test processing on the endpoint which require setup', () => {
 
   it('returns a status of 200 and logs that a new image is displayed from api/images endpoint when a cached version does not already exist', async () => {
     const consoleSpy = spyOn(console, 'log');
-    const response = await request
-      .get('/api/images')
-      .query({
-        filename: testImageName,
-        width: testImageWidth,
-        height: testImageHeight
-      });
+    const response = await request.get('/api/images').query({
+      filename: testImageName,
+      width: testImageWidth,
+      height: testImageHeight
+    });
     expect(consoleSpy).toHaveBeenCalledWith(
       'returning newly generated thumbnail'
     );
@@ -63,13 +62,11 @@ describe('Test processing on the endpoint which require setup', () => {
 
   it('returns a status of 200 and alerts user that the cached image is displayed from api/images endpoint when one exists', async () => {
     const consoleSpy = spyOn(console, 'log');
-    const response = await request
-      .get('/api/images')
-      .query({
-        filename: testImageName,
-        width: testImageWidth,
-        height: testImageHeight
-      });
+    const response = await request.get('/api/images').query({
+      filename: testImageName,
+      width: testImageWidth,
+      height: testImageHeight
+    });
     expect(consoleSpy).toHaveBeenCalledWith('returning cached image');
     expect(response.status).toBe(200);
   });
@@ -84,7 +81,7 @@ describe('Test processing on the endpoint which require setup', () => {
         Number(testImageHeight)
       )
     ).toBeResolvedTo(
-      `/home/workspace/images/thumb/${testImageName}-${testImageWidth}-${testImageHeight}.jpg`
+      path.join(__dirname, `images/thumb/${testImageName}-${testImageWidth}-${testImageHeight}.jpg`)
     );
   });
 });

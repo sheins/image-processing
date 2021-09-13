@@ -1,5 +1,6 @@
 import * as helpers from '../../../routes/api/helpers';
-import * as fs from 'fs';
+// import * as fs from 'fs';
+import path from 'path';
 
 describe('helper functions for image api', async () => {
   beforeEach(() => {
@@ -8,7 +9,7 @@ describe('helper functions for image api', async () => {
   });
 
   const expectedThumbnailPath =
-    '/home/workspace/images/thumb/fjord-200-200.jpg';
+    path.join(__dirname, 'thumb/fjord-200-200.jpg');
 
   it('returns the name for the thumbnail image', () => {
     expect(helpers.getThumbnailName('fjord', 200, 200)).toBe('fjord-200-200');
@@ -22,7 +23,7 @@ describe('helper functions for image api', async () => {
 
   it('returns the resolved expected path to the full image', () => {
     expect(helpers.getFullPath('fjord')).toBe(
-      '/home/workspace/images/full/fjord.jpg'
+      path.join(__dirname, 'images/full/fjord.jpg')
     );
   });
 
