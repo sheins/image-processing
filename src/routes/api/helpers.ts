@@ -40,10 +40,11 @@ const getAvailableImages = (): string[] =>
     .map((file) => file.replace('.jpg', ''))
     .filter((file) => !file.startsWith('.'));
 
+
 export {
   getThumbnailName,
   getThumbnailPath,
   getFullPath,
   existingCachedFile,
-  getAvailableImages
+  getAvailableImages,
 };

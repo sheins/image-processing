@@ -6,7 +6,7 @@ const port = '3000';
 
 app.listen(port);
 
-app.get('/', (req, res) => {
+app.get('/', (req: express.Request, res: express.Response): void => {
   res.send('Welcome! Image process GET requests can be made at /api/images.');
 });
 

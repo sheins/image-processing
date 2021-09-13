@@ -81,7 +81,7 @@ describe('Test processing on the endpoint which require setup', () => {
         Number(testImageHeight)
       )
     ).toBeResolvedTo(
-      path.join(__dirname, `images/thumb/${testImageName}-${testImageWidth}-${testImageHeight}.jpg`)
+      path.resolve(`./images/thumb/${testImageName}-${testImageWidth}-${testImageHeight}.jpg`)
     );
   });
 });
