@@ -52,20 +52,4 @@ describe('helper functions for image api', async () => {
       'santamonica'
     ]);
   });
-
-  // helper function here since it requires the same test set up as the api endpoint tests
-
-  // it('returns the cached file path if the file exists', async () => {
-  //   const fsSpy = spyOn(fs, 'open').and.callFake(() => Promise.resolve());
-  //   await expectAsync(
-  //     helpers.existingCachedFile(
-  //       testImageName,
-  //       Number(testImageWidth),
-  //       Number(testImageHeight)
-  //     )
-  //   ).toBeResolvedTo(
-  //     path.resolve(`./images/thumb/${testImageName}-${testImageWidth}-${testImageHeight}.jpg`)
-  //   );
-  //   fsSpy.calls.reset();
-  // });
 });

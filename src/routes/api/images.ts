@@ -16,7 +16,7 @@ images.get(
       const image = await processImage(filename, width, height);
       res.sendFile(image);
     } catch (e) {
-      res.status(400).send(e);
+      res.status(400).send((e as Error).message);
     }
   }
 );
